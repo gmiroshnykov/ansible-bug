@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: false
+  connection: local
+
+  vars_files:
+    - "environments/common.yml"
+    - "environments/{{ env }}.yml"
+
+  roles:
+    - role: echo
+      echo:
+        message: '{{ message }}'
+
+  tasks:
+    - debug: msg="task message - {{ message }}"
